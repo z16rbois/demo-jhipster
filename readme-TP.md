@@ -1,6 +1,8 @@
 # Demo JHipster
 
-## Creation des tables
+## Step1
+
+### Creation des tables
 
 A la racine du projet, créer un fichier entities.jdl
 
@@ -29,12 +31,12 @@ paginate Customer, Order with infinite-scroll
 Puis lancer la commande :
 `jhipster import-jdl entities.jdl`
 
-#Test du front
+###Test du front
 Redemarrer l'application.
 Aller dans le menu entité -> Customer : ajouter des clients
 Aller dans le menu entité -> Order : ajouter des commandes
 
-# Test des API
+### Test des API
 
 Ouvrir postman et importer le fichier : jhipster.postman_collection.json qui se trouve a la racine du projet.
 Lancer le POST "Get Token local"
