@@ -1,0 +1,195 @@
+{
+    "info": {
+        "_postman_id": "2858fb27-3fec-4619-a7c3-01050c96dcb4",
+        "name": "Demo IT Comunities Days",
+        "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+    },
+    "item": [
+        {
+            "name": "Get Token Local",
+            "request": {
+                "method": "POST",
+                "header": [
+                    {
+                        "key": "Content-Type",
+                        "value": "application/json",
+                        "type": "text"
+                    },
+                    {
+                        "key": "Accept",
+                        "value": "application/json",
+                        "type": "text"
+                    }
+                ],
+                "body": {
+                    "mode": "raw",
+                    "raw": "{  \"password\": \"admin\",  \"rememberMe\": true,  \"username\": \"admin\"  }"
+                },
+                "url": {
+                    "raw": "http://localhost:8080/api/authenticate",
+                    "protocol": "http",
+                    "host": ["localhost"],
+                    "port": "8080",
+                    "path": ["api", "authenticate"]
+                }
+            },
+            "response": []
+        },
+        {
+            "name": "Customers",
+            "request": {
+                "auth": {
+                    "type": "bearer",
+                    "bearer": [
+                        {
+                            "key": "token",
+                            "value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbiIsImF1dGgiOiJST0xFX0FETUlOLFJPTEVfVVNFUiIsImV4cCI6MTU1NDYyNzY1Nn0.6AsBxeqDIm6289CSLpUjKWZdXYZTn8wVabwIXSdIRWKPh0pe8cE_YMOVlb4RlRYQCft-YrbpW9JiEb-uhSmWTg",
+                            "type": "string"
+                        }
+                    ]
+                },
+                "method": "GET",
+                "header": [
+                    {
+                        "key": "Content-Type",
+                        "type": "text",
+                        "value": "application/json"
+                    }
+                ],
+                "body": {
+                    "mode": "raw",
+                    "raw": "{\n[\n\n]\n}"
+                },
+                "url": {
+                    "raw": "http://localhost:8080/api/customers",
+                    "protocol": "http",
+                    "host": ["localhost"],
+                    "port": "8080",
+                    "path": ["api", "customers"]
+                }
+            },
+            "response": []
+        },
+        {
+            "name": "Customers Paginated",
+            "request": {
+                "auth": {
+                    "type": "bearer",
+                    "bearer": [
+                        {
+                            "key": "token",
+                            "value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbiIsImF1dGgiOiJST0xFX0FETUlOLFJPTEVfVVNFUiIsImV4cCI6MTU1NDYyNzY1Nn0.6AsBxeqDIm6289CSLpUjKWZdXYZTn8wVabwIXSdIRWKPh0pe8cE_YMOVlb4RlRYQCft-YrbpW9JiEb-uhSmWTg",
+                            "type": "string"
+                        }
+                    ]
+                },
+                "method": "GET",
+                "header": [
+                    {
+                        "key": "Content-Type",
+                        "type": "text",
+                        "value": "application/json"
+                    }
+                ],
+                "body": {
+                    "mode": "raw",
+                    "raw": "{\n[\n\n]\n}"
+                },
+                "url": {
+                    "raw": "http://localhost:8080/api/customers?page=5&size=5",
+                    "protocol": "http",
+                    "host": ["localhost"],
+                    "port": "8080",
+                    "path": ["api", "customers"],
+                    "query": [
+                        {
+                            "key": "page",
+                            "value": "5"
+                        },
+                        {
+                            "key": "size",
+                            "value": "5"
+                        }
+                    ]
+                }
+            },
+            "response": []
+        },
+        {
+            "name": "Customers Filtered",
+            "request": {
+                "auth": {
+                    "type": "bearer",
+                    "bearer": [
+                        {
+                            "key": "token",
+                            "value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbiIsImF1dGgiOiJST0xFX0FETUlOLFJPTEVfVVNFUiIsImV4cCI6MTU1NDYyNzY1Nn0.6AsBxeqDIm6289CSLpUjKWZdXYZTn8wVabwIXSdIRWKPh0pe8cE_YMOVlb4RlRYQCft-YrbpW9JiEb-uhSmWTg",
+                            "type": "string"
+                        }
+                    ]
+                },
+                "method": "GET",
+                "header": [
+                    {
+                        "key": "Content-Type",
+                        "type": "text",
+                        "value": "application/json"
+                    }
+                ],
+                "body": {
+                    "mode": "raw",
+                    "raw": "{\n[\n\n]\n}"
+                },
+                "url": {
+                    "raw": "http://localhost:8080/api/customers?lastName.equals=DUBOIS",
+                    "protocol": "http",
+                    "host": ["localhost"],
+                    "port": "8080",
+                    "path": ["api", "customers"],
+                    "query": [
+                        {
+                            "key": "lastName.equals",
+                            "value": "DUBOIS"
+                        }
+                    ]
+                }
+            },
+            "response": []
+        },
+        {
+            "name": "Customers With Orders",
+            "request": {
+                "auth": {
+                    "type": "bearer",
+                    "bearer": [
+                        {
+                            "key": "token",
+                            "value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbiIsImF1dGgiOiJST0xFX0FETUlOLFJPTEVfVVNFUiIsImV4cCI6MTU1NDYyNzY1Nn0.6AsBxeqDIm6289CSLpUjKWZdXYZTn8wVabwIXSdIRWKPh0pe8cE_YMOVlb4RlRYQCft-YrbpW9JiEb-uhSmWTg",
+                            "type": "string"
+                        }
+                    ]
+                },
+                "method": "GET",
+                "header": [
+                    {
+                        "key": "Content-Type",
+                        "type": "text",
+                        "value": "application/json"
+                    }
+                ],
+                "body": {
+                    "mode": "raw",
+                    "raw": "{\n[\n\n]\n}"
+                },
+                "url": {
+                    "raw": "http://localhost:8080/api/extended/customers",
+                    "protocol": "http",
+                    "host": ["localhost"],
+                    "port": "8080",
+                    "path": ["api", "extended", "customers"]
+                }
+            },
+            "response": []
+        }
+    ]
+}
