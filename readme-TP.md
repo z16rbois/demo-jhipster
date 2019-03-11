@@ -42,3 +42,35 @@ Ouvrir postman et importer le fichier : jhipster.postman_collection.json qui se 
 Lancer le POST "Get Token local"
 Copier la valuer du token
 Lancer les GET "Customers" "Customers Paginated" et "Customer Filtered"
+
+### Customisation du back
+
+Mettre une date de commande par defaut a la date du jour si la date est a null.
+
+Dans la classe OrderService
+
+Methode : public Order save(Order order)
+
+Ajouter :
+
+```java
+if (order.getDate() == null){
+   order.setDate(LocalDate.now());
+}
+
+```
+
+Ainsi que l'import :
+
+```java
+import java.time.LocalDate;
+```
+
+### Customisation du front
+
+Dans le fichier order.component.html
+
+Ligne 3, changer en
+`<span>Sport Orders</span>`
+
+Retourner sur la page des orders puis créé une Commande sans date.
