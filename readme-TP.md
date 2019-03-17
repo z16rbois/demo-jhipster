@@ -19,7 +19,7 @@ entity Order {
 }
 
 relationship OneToMany {
-Customer{order(billNumber)} to Order
+Customer to Order{customer(firstName)}
 }
 
 filter Customer, Order
