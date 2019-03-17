@@ -43,11 +43,13 @@ describe('Order e2e test', () => {
             orderUpdatePage.setDateInput('2000-12-31'),
             orderUpdatePage.setBillNumberInput('billNumber'),
             orderUpdatePage.setAmountInput('5'),
+            orderUpdatePage.setStatusInput('status'),
             orderUpdatePage.customerSelectLastOption()
         ]);
         expect(await orderUpdatePage.getDateInput()).to.eq('2000-12-31');
         expect(await orderUpdatePage.getBillNumberInput()).to.eq('billNumber');
         expect(await orderUpdatePage.getAmountInput()).to.eq('5');
+        expect(await orderUpdatePage.getStatusInput()).to.eq('status');
         await orderUpdatePage.save();
         expect(await orderUpdatePage.getSaveButton().isPresent()).to.be.false;
 

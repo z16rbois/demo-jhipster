@@ -12,6 +12,10 @@
         {
             "fieldName": "amount",
             "fieldType": "Double"
+        },
+        {
+            "fieldName": "status",
+            "fieldType": "String"
         }
     ],
     "relationships": [

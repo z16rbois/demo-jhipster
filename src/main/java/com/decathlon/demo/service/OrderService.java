@@ -10,7 +10,6 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.time.LocalDate;
 import java.util.Optional;
 
 /**
@@ -36,9 +35,6 @@ public class OrderService {
      */
     public Order save(Order order) {
         log.debug("Request to save Order : {}", order);
-        if (order.getDate() == null){
-            order.setDate(LocalDate.now());
-        }
         return orderRepository.save(order);
     }
 

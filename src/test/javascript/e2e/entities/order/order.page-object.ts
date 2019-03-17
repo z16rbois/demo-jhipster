@@ -29,6 +29,7 @@ export class OrderUpdatePage {
     dateInput = element(by.id('field_date'));
     billNumberInput = element(by.id('field_billNumber'));
     amountInput = element(by.id('field_amount'));
+    statusInput = element(by.id('field_status'));
     customerSelect = element(by.id('field_customer'));
 
     async getPageTitle() {
@@ -57,6 +58,14 @@ export class OrderUpdatePage {
 
     async getAmountInput() {
         return this.amountInput.getAttribute('value');
+    }
+
+    async setStatusInput(status) {
+        await this.statusInput.sendKeys(status);
+    }
+
+    async getStatusInput() {
+        return this.statusInput.getAttribute('value');
     }
 
     async customerSelectLastOption() {

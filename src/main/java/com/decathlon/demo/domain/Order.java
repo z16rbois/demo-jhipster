@@ -34,6 +34,9 @@ public class Order implements Serializable {
     @Column(name = "amount")
     private Double amount;
 
+    @Column(name = "status")
+    private String status;
+
     @ManyToOne
     @JsonIgnoreProperties("orders")
     private Customer customer;
@@ -86,6 +89,19 @@ public class Order implements Serializable {
         this.amount = amount;
     }
 
+    public String getStatus() {
+        return status;
+    }
+
+    public Order status(String status) {
+        this.status = status;
+        return this;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
+    }
+
     public Customer getCustomer() {
         return customer;
     }
@@ -127,6 +143,7 @@ public class Order implements Serializable {
             ", date='" + getDate() + "'" +
             ", billNumber='" + getBillNumber() + "'" +
             ", amount=" + getAmount() +
+            ", status='" + getStatus() + "'" +
             "}";
     }
 }

@@ -6,6 +6,7 @@ export interface IOrder {
     date?: Moment;
     billNumber?: string;
     amount?: number;
+    status?: string;
     customer?: ICustomer;
 }
 
@@ -15,6 +16,7 @@ export class Order implements IOrder {
         public date?: Moment,
         public billNumber?: string,
         public amount?: number,
+        public status?: string,
         public customer?: ICustomer
     ) {}
 }

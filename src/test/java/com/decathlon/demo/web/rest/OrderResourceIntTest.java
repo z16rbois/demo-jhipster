@@ -55,6 +55,9 @@ public class OrderResourceIntTest {
     private static final Double DEFAULT_AMOUNT = 1D;
     private static final Double UPDATED_AMOUNT = 2D;
 
+    private static final String DEFAULT_STATUS = "AAAAAAAAAA";
+    private static final String UPDATED_STATUS = "BBBBBBBBBB";
+
     @Autowired
     private OrderRepository orderRepository;
 
@@ -105,7 +108,8 @@ public class OrderResourceIntTest {
         Order order = new Order()
             .date(DEFAULT_DATE)
             .billNumber(DEFAULT_BILL_NUMBER)
-            .amount(DEFAULT_AMOUNT);
+            .amount(DEFAULT_AMOUNT)
+            .status(DEFAULT_STATUS);
         return order;
     }
 
@@ -132,6 +136,7 @@ public class OrderResourceIntTest {
         assertThat(testOrder.getDate()).isEqualTo(DEFAULT_DATE);
         assertThat(testOrder.getBillNumber()).isEqualTo(DEFAULT_BILL_NUMBER);
         assertThat(testOrder.getAmount()).isEqualTo(DEFAULT_AMOUNT);
+        assertThat(testOrder.getStatus()).isEqualTo(DEFAULT_STATUS);
     }
 
     @Test
@@ -166,7 +171,8 @@ public class OrderResourceIntTest {
             .andExpect(jsonPath("$.[*].id").value(hasItem(order.getId().intValue())))
             .andExpect(jsonPath("$.[*].date").value(hasItem(DEFAULT_DATE.toString())))
             .andExpect(jsonPath("$.[*].billNumber").value(hasItem(DEFAULT_BILL_NUMBER.toString())))
-            .andExpect(jsonPath("$.[*].amount").value(hasItem(DEFAULT_AMOUNT.doubleValue())));
+            .andExpect(jsonPath("$.[*].amount").value(hasItem(DEFAULT_AMOUNT.doubleValue())))
+            .andExpect(jsonPath("$.[*].status").value(hasItem(DEFAULT_STATUS.toString())));
     }
     
     @Test
@@ -182,7 +188,8 @@ public class OrderResourceIntTest {
             .andExpect(jsonPath("$.id").value(order.getId().intValue()))
             .andExpect(jsonPath("$.date").value(DEFAULT_DATE.toString()))
             .andExpect(jsonPath("$.billNumber").value(DEFAULT_BILL_NUMBER.toString()))
-            .andExpect(jsonPath("$.amount").value(DEFAULT_AMOUNT.doubleValue()));
+            .andExpect(jsonPath("$.amount").value(DEFAULT_AMOUNT.doubleValue()))
+            .andExpect(jsonPath("$.status").value(DEFAULT_STATUS.toString()));
     }
 
     @Test
@@ -331,6 +338,45 @@ public class OrderResourceIntTest {
 
     @Test
     @Transactional
+    public void getAllOrdersByStatusIsEqualToSomething() throws Exception {
+        // Initialize the database
+        orderRepository.saveAndFlush(order);
+
+        // Get all the orderList where status equals to DEFAULT_STATUS
+        defaultOrderShouldBeFound("status.equals=" + DEFAULT_STATUS);
+
+        // Get all the orderList where status equals to UPDATED_STATUS
+        defaultOrderShouldNotBeFound("status.equals=" + UPDATED_STATUS);
+    }
+
+    @Test
+    @Transactional
+    public void getAllOrdersByStatusIsInShouldWork() throws Exception {
+        // Initialize the database
+        orderRepository.saveAndFlush(order);
+
+        // Get all the orderList where status in DEFAULT_STATUS or UPDATED_STATUS
+        defaultOrderShouldBeFound("status.in=" + DEFAULT_STATUS + "," + UPDATED_STATUS);
+
+        // Get all the orderList where status equals to UPDATED_STATUS
+        defaultOrderShouldNotBeFound("status.in=" + UPDATED_STATUS);
+    }
+
+    @Test
+    @Transactional
+    public void getAllOrdersByStatusIsNullOrNotNull() throws Exception {
+        // Initialize the database
+        orderRepository.saveAndFlush(order);
+
+        // Get all the orderList where status is not null
+        defaultOrderShouldBeFound("status.specified=true");
+
+        // Get all the orderList where status is null
+        defaultOrderShouldNotBeFound("status.specified=false");
+    }
+
+    @Test
+    @Transactional
     public void getAllOrdersByCustomerIsEqualToSomething() throws Exception {
         // Initialize the database
         Customer customer = CustomerResourceIntTest.createEntity(em);
@@ -357,7 +403,8 @@ public class OrderResourceIntTest {
             .andExpect(jsonPath("$.[*].id").value(hasItem(order.getId().intValue())))
             .andExpect(jsonPath("$.[*].date").value(hasItem(DEFAULT_DATE.toString())))
             .andExpect(jsonPath("$.[*].billNumber").value(hasItem(DEFAULT_BILL_NUMBER)))
-            .andExpect(jsonPath("$.[*].amount").value(hasItem(DEFAULT_AMOUNT.doubleValue())));
+            .andExpect(jsonPath("$.[*].amount").value(hasItem(DEFAULT_AMOUNT.doubleValue())))
+            .andExpect(jsonPath("$.[*].status").value(hasItem(DEFAULT_STATUS)));
 
         // Check, that the count call also returns 1
         restOrderMockMvc.perform(get("/api/orders/count?sort=id,desc&" + filter))
@@ -407,7 +454,8 @@ public class OrderResourceIntTest {
         updatedOrder
             .date(UPDATED_DATE)
             .billNumber(UPDATED_BILL_NUMBER)
-            .amount(UPDATED_AMOUNT);
+            .amount(UPDATED_AMOUNT)
+            .status(UPDATED_STATUS);
 
         restOrderMockMvc.perform(put("/api/orders")
             .contentType(TestUtil.APPLICATION_JSON_UTF8)
@@ -421,6 +469,7 @@ public class OrderResourceIntTest {
         assertThat(testOrder.getDate()).isEqualTo(UPDATED_DATE);
         assertThat(testOrder.getBillNumber()).isEqualTo(UPDATED_BILL_NUMBER);
         assertThat(testOrder.getAmount()).isEqualTo(UPDATED_AMOUNT);
+        assertThat(testOrder.getStatus()).isEqualTo(UPDATED_STATUS);
     }
 
     @Test
