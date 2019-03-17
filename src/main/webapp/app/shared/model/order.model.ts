@@ -7,6 +7,7 @@ export interface IOrder {
     billNumber?: string;
     amount?: number;
     status?: string;
+    name?: string;
     customer?: ICustomer;
 }
 
@@ -17,6 +18,7 @@ export class Order implements IOrder {
         public billNumber?: string,
         public amount?: number,
         public status?: string,
+        public name?: string,
         public customer?: ICustomer
     ) {}
 }

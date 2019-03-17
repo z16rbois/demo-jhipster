@@ -16,6 +16,10 @@
         {
             "fieldName": "status",
             "fieldType": "String"
+        },
+        {
+            "fieldName": "name",
+            "fieldType": "String"
         }
     ],
     "relationships": [

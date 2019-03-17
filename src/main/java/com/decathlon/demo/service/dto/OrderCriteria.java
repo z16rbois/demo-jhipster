@@ -33,6 +33,8 @@ public class OrderCriteria implements Serializable {
 
     private StringFilter status;
 
+    private StringFilter name;
+
     private LongFilter customerId;
 
     public LongFilter getId() {
@@ -75,6 +77,14 @@ public class OrderCriteria implements Serializable {
         this.status = status;
     }
 
+    public StringFilter getName() {
+        return name;
+    }
+
+    public void setName(StringFilter name) {
+        this.name = name;
+    }
+
     public LongFilter getCustomerId() {
         return customerId;
     }
@@ -99,6 +109,7 @@ public class OrderCriteria implements Serializable {
             Objects.equals(billNumber, that.billNumber) &&
             Objects.equals(amount, that.amount) &&
             Objects.equals(status, that.status) &&
+            Objects.equals(name, that.name) &&
             Objects.equals(customerId, that.customerId);
     }
 
@@ -110,6 +121,7 @@ public class OrderCriteria implements Serializable {
         billNumber,
         amount,
         status,
+        name,
         customerId
         );
     }
@@ -122,6 +134,7 @@ public class OrderCriteria implements Serializable {
                 (billNumber != null ? "billNumber=" + billNumber + ", " : "") +
                 (amount != null ? "amount=" + amount + ", " : "") +
                 (status != null ? "status=" + status + ", " : "") +
+                (name != null ? "name=" + name + ", " : "") +
                 (customerId != null ? "customerId=" + customerId + ", " : "") +
             "}";
     }

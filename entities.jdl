@@ -6,7 +6,8 @@ entity Order {
 date LocalDate,
 billNumber String,
 amount Double,
-status String
+status String,
+name String
 }
 relationship OneToMany {
 Customer to Order{customer(firstName)}

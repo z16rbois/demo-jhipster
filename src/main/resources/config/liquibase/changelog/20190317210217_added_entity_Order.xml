@@ -34,6 +34,14 @@
                 <constraints nullable="true" />
             </column>
 
+            <column name="status" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+
+            <column name="name" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+
             <column name="customer_id" type="bigint">
                 <constraints nullable="true" />
             </column>

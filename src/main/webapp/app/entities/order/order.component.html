@@ -19,6 +19,7 @@
             <th jhiSortBy="billNumber"><span>Bill Number</span> <fa-icon [icon]="'sort'"></fa-icon></th>
             <th jhiSortBy="amount"><span>Amount</span> <fa-icon [icon]="'sort'"></fa-icon></th>
             <th jhiSortBy="status"><span>Status</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="name"><span>Name</span> <fa-icon [icon]="'sort'"></fa-icon></th>
             <th jhiSortBy="customer.firstName"><span>Customer</span> <fa-icon [icon]="'sort'"></fa-icon></th>
             <th></th>
             </tr>
@@ -30,6 +31,7 @@
                 <td>{{order.billNumber}}</td>
                 <td>{{order.amount}}</td>
                 <td>{{order.status}}</td>
+                <td>{{order.name}}</td>
                 <td>
                     <div *ngIf="order.customer">
                         <a [routerLink]="['../customer', order.customer?.id, 'view' ]" >{{order.customer?.firstName}}</a>
