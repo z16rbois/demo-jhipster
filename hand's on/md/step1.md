@@ -38,14 +38,17 @@ Aller dans le menu entité -> Order : ajouter des commandes
 
 ### Test des API
 
-Ouvrir postman et importer le fichier : jhipster.postman_collection.json qui se trouve a la racine du projet.
+Ouvrir postman et importer le fichier : jhipster.postman_collection.json qui se trouve dans le dossier "hand's on"
 Lancer le POST "Get Token local"
-Copier la valuer du token
+Copier la value du token
+
 Lancer les GET "Customers" "Customers Paginated" et "Customer Filtered"
+avec dans l'onglet Authorization - type : Bearer Token ; token : valeur du token copiée
+
 
 ### Customisation du back
 
-Mettre une date de commande par defaut a la date du jour si la date est a null.
+Mettre une date de commande par defaut à la date du jour si la date est a null.
 
 Dans la classe OrderService
 
@@ -73,4 +76,4 @@ Dans le fichier order.component.html
 Ligne 3, changer en
 `<span>Sport Orders</span>`
 
-Retourner sur la page des orders puis créé une Commande sans date.
+Retourner sur la page des orders puis créer une commande sans date.
