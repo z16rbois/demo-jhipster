@@ -3,6 +3,7 @@ package com.decathlon.demo.web.rest;
 import com.decathlon.demo.DemoJhipsterApp;
 
 import com.decathlon.demo.domain.Order;
+import com.decathlon.demo.domain.OrderLine;
 import com.decathlon.demo.domain.Customer;
 import com.decathlon.demo.repository.OrderRepository;
 import com.decathlon.demo.service.OrderService;
@@ -420,6 +421,25 @@ public class OrderResourceIntTest {
         // Get all the orderList where name is null
         defaultOrderShouldNotBeFound("name.specified=false");
     }
+
+    @Test
+    @Transactional
+    public void getAllOrdersByOrderLineIsEqualToSomething() throws Exception {
+        // Initialize the database
+        OrderLine orderLine = OrderLineResourceIntTest.createEntity(em);
+        em.persist(orderLine);
+        em.flush();
+        order.addOrderLine(orderLine);
+        orderRepository.saveAndFlush(order);
+        Long orderLineId = orderLine.getId();
+
+        // Get all the orderList where orderLine equals to orderLineId
+        defaultOrderShouldBeFound("orderLineId.equals=" + orderLineId);
+
+        // Get all the orderList where orderLine equals to orderLineId + 1
+        defaultOrderShouldNotBeFound("orderLineId.equals=" + (orderLineId + 1));
+    }
+
 
     @Test
     @Transactional

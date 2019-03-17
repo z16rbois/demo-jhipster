@@ -98,6 +98,10 @@ public class OrderQueryService extends QueryService<Order> {
             if (criteria.getName() != null) {
                 specification = specification.and(buildStringSpecification(criteria.getName(), Order_.name));
             }
+            if (criteria.getOrderLineId() != null) {
+                specification = specification.and(buildSpecification(criteria.getOrderLineId(),
+                    root -> root.join(Order_.orderLines, JoinType.LEFT).get(OrderLine_.id)));
+            }
             if (criteria.getCustomerId() != null) {
                 specification = specification.and(buildSpecification(criteria.getCustomerId(),
                     root -> root.join(Order_.customer, JoinType.LEFT).get(Customer_.id)));

@@ -1,4 +1,5 @@
 import { Moment } from 'moment';
+import { IOrderLine } from 'app/shared/model/order-line.model';
 import { ICustomer } from 'app/shared/model/customer.model';
 
 export interface IOrder {
@@ -8,6 +9,7 @@ export interface IOrder {
     amount?: number;
     status?: string;
     name?: string;
+    orderLines?: IOrderLine[];
     customer?: ICustomer;
 }
 
@@ -19,6 +21,7 @@ export class Order implements IOrder {
         public amount?: number,
         public status?: string,
         public name?: string,
+        public orderLines?: IOrderLine[],
         public customer?: ICustomer
     ) {}
 }

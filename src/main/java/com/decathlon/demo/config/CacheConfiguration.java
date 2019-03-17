@@ -41,6 +41,8 @@ public class CacheConfiguration {
             cm.createCache(com.decathlon.demo.domain.Customer.class.getName(), jcacheConfiguration);
             cm.createCache(com.decathlon.demo.domain.Customer.class.getName() + ".orders", jcacheConfiguration);
             cm.createCache(com.decathlon.demo.domain.Order.class.getName(), jcacheConfiguration);
+            cm.createCache(com.decathlon.demo.domain.Order.class.getName() + ".orderLines", jcacheConfiguration);
+            cm.createCache(com.decathlon.demo.domain.OrderLine.class.getName(), jcacheConfiguration);
             // jhipster-needle-ehcache-add-entry
         };
     }
