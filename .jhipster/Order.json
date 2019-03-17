@@ -1,0 +1,35 @@
+{
+    "name": "Order",
+    "fields": [
+        {
+            "fieldName": "date",
+            "fieldType": "LocalDate"
+        },
+        {
+            "fieldName": "billNumber",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "amount",
+            "fieldType": "Double"
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipType": "many-to-one",
+            "otherEntityName": "customer",
+            "otherEntityRelationshipName": "order",
+            "relationshipName": "customer",
+            "otherEntityField": "firstName"
+        }
+    ],
+    "changelogDate": "20190317210217",
+    "entityTableName": "order",
+    "dto": "no",
+    "pagination": "infinite-scroll",
+    "service": "serviceClass",
+    "jpaMetamodelFiltering": true,
+    "fluentMethods": true,
+    "clientRootFolder": "",
+    "applications": "*"
+}

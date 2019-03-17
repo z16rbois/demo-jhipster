@@ -1,0 +1,14 @@
+entity Customer {
+firstName String,
+lastName String
+}
+entity Order {
+date LocalDate,
+billNumber String,
+amount Double
+}
+relationship OneToMany {
+Customer to Order{customer(firstName)}
+}
+filter Customer, Order
+paginate Customer, Order with infinite-scroll
