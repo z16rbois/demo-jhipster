@@ -1,0 +1,81 @@
+[
+    {
+        "id": 1,
+        "firstName": "Toto",
+        "lastName": "Titi",
+        "orders": [
+            {
+                "id": 1,
+                "date": "2019-03-11",
+                "billNumber": "123",
+                "amount": 1121,
+                "status": "COMPELTED",
+                "libelle": "commande 1",
+                "customer": {
+                    "id": 1,
+                    "firstName": "Toto",
+                    "lastName": "Titi"
+                },
+                "orderLines": [
+                    {
+                        "id": 1,
+                        "quantity": 1,
+                        "label": "truc",
+                        "unitPrice": 11,
+                        "order": {
+                            "id": 1,
+                            "date": "2019-03-11",
+                            "billNumber": "123",
+                            "amount": 1121,
+                            "status": "COMPELTED",
+                            "libelle": "commande 1",
+                            "customer": {
+                                "id": 1,
+                                "firstName": "Toto",
+                                "lastName": "Titi"
+                            }
+                        }
+                    },
+                    {
+                        "id": 2,
+                        "quantity": 2,
+                        "label": "machins",
+                        "unitPrice": 30,
+                        "order": {
+                            "id": 1,
+                            "date": "2019-03-11",
+                            "billNumber": "123",
+                            "amount": 1121,
+                            "status": "COMPELTED",
+                            "libelle": "commande 1",
+                            "customer": {
+                                "id": 1,
+                                "firstName": "Toto",
+                                "lastName": "Titi"
+                            }
+                        }
+                    },
+                    {
+                        "id": 3,
+                        "quantity": 2,
+                        "label": "bidules",
+                        "unitPrice": 20,
+                        "order": {
+                            "id": 1,
+                            "date": "2019-03-11",
+                            "billNumber": "123",
+                            "amount": 1121,
+                            "status": "COMPELTED",
+                            "libelle": "commande 1",
+                            "customer": {
+                                "id": 1,
+                                "firstName": "Toto",
+                                "lastName": "Titi"
+                            }
+                        }
+                    }
+                ]
+            }
+        ]
+    }
+]

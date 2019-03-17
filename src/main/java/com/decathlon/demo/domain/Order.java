@@ -1,6 +1,7 @@
 package com.decathlon.demo.domain;
 
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import org.hibernate.annotations.Cache;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
@@ -9,6 +10,8 @@ import javax.persistence.*;
 
 import java.io.Serializable;
 import java.time.LocalDate;
+import java.util.HashSet;
+import java.util.Set;
 import java.util.Objects;
 
 /**
@@ -40,6 +43,9 @@ public class Order implements Serializable {
     @Column(name = "name")
     private String name;
 
+    @OneToMany(mappedBy = "order")
+    @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
+    private Set<OrderLine> orderLines = new HashSet<>();
     @ManyToOne
     @JsonIgnoreProperties("orders")
     private Customer customer;
@@ -116,6 +122,31 @@ public class Order implements Serializable {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public Set<OrderLine> getOrderLines() {
+        return orderLines;
+    }
+
+    public Order orderLines(Set<OrderLine> orderLines) {
+        this.orderLines = orderLines;
+        return this;
+    }
+
+    public Order addOrderLine(OrderLine orderLine) {
+        this.orderLines.add(orderLine);
+        orderLine.setOrder(this);
+        return this;
+    }
+
+    public Order removeOrderLine(OrderLine orderLine) {
+        this.orderLines.remove(orderLine);
+        orderLine.setOrder(null);
+        return this;
+    }
+
+    public void setOrderLines(Set<OrderLine> orderLines) {
+        this.orderLines = orderLines;
     }
 
     public Customer getCustomer() {

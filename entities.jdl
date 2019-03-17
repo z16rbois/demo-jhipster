@@ -9,8 +9,21 @@ amount Double,
 status String,
 name String
 }
+
+entity OrderLine {
+	quantity Integer,
+    label String,
+    unitPrice Double
+}
+
+
 relationship OneToMany {
 Customer to Order{customer(firstName)}
 }
-filter Customer, Order
-paginate Customer, Order with infinite-scroll
+relationship OneToMany {
+Order to OrderLine
+}
+
+filter Customer, Order, OrderLine
+
+paginate Customer, Order, OrderLine with infinite-scroll
