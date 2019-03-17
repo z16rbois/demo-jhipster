@@ -117,7 +117,7 @@ Lancer l'application
 
 Dans postman lancer la requete GET "Customers With Orders"
 
-Ajouter une nouvelle colonne dans l'entité order du fichier entities.jdl
+Ajouter une nouvelle colonne "name" de type "String" dans l'entité order du fichier entities.jdl
 
 Lancer la commande `jhipster import-jdl entities.jdl`
 
