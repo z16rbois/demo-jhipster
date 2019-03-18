@@ -2,6 +2,40 @@
 
 ## Step2
 
+
+### Customisation du back
+
+Mettre une date de commande par defaut à la date du jour si la date est a null.
+
+Dans la classe OrderService
+
+Methode : public Order save(Order order)
+
+Ajouter :
+
+```java
+if (order.getDate() == null){
+   order.setDate(LocalDate.now());
+}
+
+```
+
+Ainsi que l'import :
+
+```java
+import java.time.LocalDate;
+```
+
+### Customisation du front
+
+Dans le fichier order.component.html
+
+Ligne 3, changer en
+`<span>Sport Orders</span>`
+
+Retourner sur la page des orders puis créer une commande sans date.
+
+
 ### Ajout d'une nouvelle colonne
 
 Dans le fichier entities.jdl, relation Order :

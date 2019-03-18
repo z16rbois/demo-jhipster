@@ -45,35 +45,3 @@ Copier la value du token
 Lancer les GET "Customers" "Customers Paginated" et "Customer Filtered"
 avec dans l'onglet Authorization - type : Bearer Token ; token : valeur du token copiée
 
-
-### Customisation du back
-
-Mettre une date de commande par defaut à la date du jour si la date est a null.
-
-Dans la classe OrderService
-
-Methode : public Order save(Order order)
-
-Ajouter :
-
-```java
-if (order.getDate() == null){
-   order.setDate(LocalDate.now());
-}
-
-```
-
-Ainsi que l'import :
-
-```java
-import java.time.LocalDate;
-```
-
-### Customisation du front
-
-Dans le fichier order.component.html
-
-Ligne 3, changer en
-`<span>Sport Orders</span>`
-
-Retourner sur la page des orders puis créer une commande sans date.
