@@ -36,9 +36,6 @@ public class OrderService {
      */
     public Order save(Order order) {
         log.debug("Request to save Order : {}", order);
-        if (order.getDate() == null){
-            order.setDate(LocalDate.now());
-        }
         return orderRepository.save(order);
     }
 
