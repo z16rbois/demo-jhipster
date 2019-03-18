@@ -10,7 +10,7 @@
 
     <changeSet author="rboisb50" id="add_status">
         <addColumn tableName="jhi_order">
-            <column name="status" type="varchar(255)" />
+            <column name="name" type="varchar(255)" />
         </addColumn>
     </changeSet>
 

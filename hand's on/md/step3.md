@@ -121,6 +121,9 @@ Ajouter une nouvelle colonne "name" de type "String" dans l'entité order du fic
 
 Lancer la commande `jhipster import-jdl entities.jdl`
 
+Comme lors du step2, faire un revert du fichier 20190317210217_added_entity_Order.xml et créer le fichier d'ajout de la colonne name.
+Ajouter la référence a ce fichier dans le fichier master.
+
 Redemarrer l'application
 
 Dans postman lancer la requete GET "Customers With Orders"
