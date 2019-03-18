@@ -26,6 +26,8 @@ Faire un revert des changements fait sur le fichier :
 Créer le fichier : 20190703000000_add_status.xml
 a l'emplacement : demo-jhipster/src/main/resources/config/liquibase/changelog
 
+(fichier complet présent dans le dossier hand's on/src/)
+
 Contenu :
 
 ```java
