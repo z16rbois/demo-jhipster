@@ -42,7 +42,7 @@ Contenu :
 
 
     <changeSet author="rboisb50" id="add_status">
-        <addColumn tableName="JHI_ORDER">
+        <addColumn tableName="jhi_order">
             <column name="status" type="varchar(255)" />
         </addColumn>
     </changeSet>
