@@ -24,6 +24,12 @@
     ],
     "relationships": [
         {
+            "relationshipType": "one-to-many",
+            "otherEntityName": "orderLine",
+            "otherEntityRelationshipName": "order",
+            "relationshipName": "orderLine"
+        },
+        {
             "relationshipType": "many-to-one",
             "otherEntityName": "customer",
             "otherEntityRelationshipName": "order",
